@@ -25,7 +25,7 @@ export const Navbar = () => {
         <Text color='white' h2>P</Text>
         <Text color='white' h3>okémon</Text>
         <Spacer css={{ flex: 1 }} />
-        <Text color='white'>Favoritos</Text>
+        <Text color='white' style={{ marginRight: '25px'}}>Favoritos</Text>
     </div>
   )
 }
