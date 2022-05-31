@@ -11,7 +11,7 @@ interface Props {
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   return (
     <MainLayout
-        title='Pokemon'
+        title={`${pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}`}
     >
         <Grid.Container css={{ marginTop: '5px'}} gap={2}>
           <Grid xs={12} sm={4}>
