@@ -3,12 +3,18 @@ import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { MainLayout } from '../../components/layouts'
 import pokeAPI from '../../api/pokeAPI';
 import { Pokemon } from '../../interfaces/pokemon-full';
+import {toggleFavorite} from '../../utils';
 
 interface Props {
   pokemon: Pokemon;
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+
+  const onToggleFavorite = () => {
+    toggleFavorite(pokemon.id);
+  }
+
   return (
     <MainLayout
         title={`${pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}`}
@@ -34,6 +40,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 <Button
                   color='gradient'
                   ghost
+                  onClick={onToggleFavorite}
                 >
                   <Text transform='uppercase' size={14}>Guardar en favoritos</Text>
                 </Button>
