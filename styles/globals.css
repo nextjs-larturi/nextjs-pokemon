@@ -1,0 +1,19 @@
+.container-header-card {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container-header-card button {
+    margin: 14px 4px;
+}
+
+@media (max-width: 450px) {
+    .container-header-card {
+        flex-direction: column;
+    }
+
+    .container-header-card h1 {
+        text-align: center;
+    }
+}
