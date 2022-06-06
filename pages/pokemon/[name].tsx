@@ -44,7 +44,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
             <Card hoverable css={{ padding: '30px' }}>
               <Card.Body>
                 <Card.Image 
-                  src={pokemon.sprites.other?.dream_world.front_default || '/no-image.png'}
+                  src={pokemon.sprites.other?.dream_world.front_default || '/img/no-image.png'}
                   alt={pokemon.name} 
                   width={'100%'}
                   height={200}
@@ -75,25 +75,25 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
 
                 <Container direction='row' display='flex'>
                   <Image 
-                    src={pokemon.sprites.front_default}
+                    src={pokemon.sprites.front_default || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.back_default}
+                    src={pokemon.sprites.back_default || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.front_shiny}
+                    src={pokemon.sprites.front_shiny || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.back_shiny}
+                    src={pokemon.sprites.back_shiny || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
