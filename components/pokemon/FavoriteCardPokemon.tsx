@@ -33,7 +33,7 @@ export const FavoriteCardPokemon: FC<Props> = ({pokemonId}) => {
          >
             <Card.Body>
                <Card.Image
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg` || '/img/no-image.png'}
                   alt='pokemon'
                   width={'100%'}
                   height={140}
