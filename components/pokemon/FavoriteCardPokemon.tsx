@@ -13,7 +13,11 @@ export const FavoriteCardPokemon: FC<Props> = ({pokemonId}) => {
 
    const onFavoriteClicked = () => {
      const pokemon = getPokemonInfo(pokemonId.toString()).then(pokemon => {
-         router.push(`/pokemon/${pokemon.name}`);
+        if (pokemon!.name) {
+         router.push(`/pokemon/${pokemon!.name}`);
+        } else {
+         router.push('/');
+        }
      });
    } 
 
