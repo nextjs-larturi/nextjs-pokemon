@@ -44,7 +44,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
             <Card hoverable css={{ padding: '30px' }}>
               <Card.Body>
                 <Card.Image 
-                  src={pokemon.sprites.other?.dream_world.front_default || '/no-image.png'}
+                  src={pokemon.sprites.other?.dream_world.front_default || '/img/no-image.png'}
                   alt={pokemon.name} 
                   width={'100%'}
                   height={200}
@@ -75,25 +75,25 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
                 <Container direction='row' display='flex'>
                   <Image 
-                    src={pokemon.sprites.front_default}
+                    src={pokemon.sprites.front_default || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.back_default}
+                    src={pokemon.sprites.back_default || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.front_shiny}
+                    src={pokemon.sprites.front_shiny || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
                   />
                   <Image 
-                    src={pokemon.sprites.back_shiny}
+                    src={pokemon.sprites.back_shiny || '/img/no-image.png'}
                     alt={pokemon.name}
                     width={100}
                     height={100}
@@ -114,18 +114,30 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
   return {
     paths: allPokemons.map((id) => ({ params: { id } })),
-    fallback: false
+    fallback: 'blocking'
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { id } = params as { id: string };
+
+  const pokemon = await getPokemonInfo(id);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
   
   return {
     props: {
-      pokemon: await getPokemonInfo(id)
-    }
+      pokemon
+    },
+    revalidate: 86400, //60 * 60 * 24 (24 hours)
   }
 }
 
