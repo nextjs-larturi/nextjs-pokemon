@@ -11,8 +11,6 @@ const origin = (typeof window == 'undefined') ? '' :  window.location.origin;
 
 export const MainLayout: FC<Props> = ({ children, title }) => {
 
-  console.log(origin);
-
   return (
     <>
         <Head>
